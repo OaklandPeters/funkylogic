@@ -1,6 +1,14 @@
 funky-logic
 ================
 
+REVISED
+---------
+This repo is deprecated -- since I drafted the idea before I learned about Monads. Using Monads makes this whole 'Abstract Syntax Tree - Like' method chaining concept MUCH easier and clearer.
+
+However, I'm leaving this repo up for record keeping purposes.
+
+
+
 Synopsis
 --------
 Functional-programming based classes for Python classes supporting logical operations.
