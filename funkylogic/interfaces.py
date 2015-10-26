@@ -4,9 +4,9 @@ Interfaces and generic functions related to LogicalExpression
 import abc
 import collections
 
-from funkylogic.extern import ducktype
+from .extern import ducktype
 
-from funkylogic import support
+from . import support
 
 class LogicalInterface(collections.Sequence):
     operation = abc.abstractmethod(support.NOT_IMPLEMENTED)

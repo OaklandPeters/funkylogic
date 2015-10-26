@@ -34,7 +34,7 @@ def unary(logical):
     """
     return "{name} {value}".format(
         name=type(logical).__name__,
-        value=iter(logical).next()
+        value=iter(logical).__next__()
     )
 
 def binary(logical):
@@ -46,7 +46,7 @@ def binary(logical):
     return "({left} {name} {right}".format(
         left=iterator.next(),
         name=type(logical).__name__,
-        right=iterator.next()
+        right=iterator.__next__()
     )
 
 def n_ary(logical):

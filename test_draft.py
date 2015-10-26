@@ -27,17 +27,15 @@ class DraftTests(unittest.TestCase):
         union = draft.LogicalUnion('a', 'b')
 
         self.assertEqual(tuple(atoms), tuple(union))
-        self.assertEQual(atoms, union)
+        self.assertEqual(atoms, union)
 
 
 class InterfaceTests(unittest.TestCase):
-    def test_isinstance(self):
-        from interfaces import _IS_LOGICAL
-        
-        self.assertFalse(_IS_LOGICAL(draft.LogicalExpression))
-        self.assertFalse(_IS_LOGICAL(draft.LogicalUnion))
-        self.assertTrue(_IS_LOGICAL(draft.LogicalUnion(1)))
-        self.assertFalse(_IS_LOGICAL(draft.ConcreteSequence))
+    def test_isinstance(self):        
+        self.assertFalse(interfaces._IS_LOGICAL(draft.LogicalExpression))
+        self.assertFalse(interfaces._IS_LOGICAL(draft.LogicalUnion))
+        self.assertTrue(interfaces._IS_LOGICAL(draft.LogicalUnion(1)))
+        self.assertFalse(interfaces._IS_LOGICAL(draft.ConcreteSequence))
 
     def test_issubclass(self):
         is_logical = lambda obj: issubclass(obj, interfaces.LogicalInterface)
@@ -47,3 +45,6 @@ class InterfaceTests(unittest.TestCase):
         self.assertFalse(is_logical(draft.ConcreteSequence))
 
         self.assertRaises(TypeError, is_logical, draft.LogicalUnion(1))
+
+
+unittest.main()

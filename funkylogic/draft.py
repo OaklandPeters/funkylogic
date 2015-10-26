@@ -10,9 +10,9 @@ import collections
 import abc
 import functools
 
-from funkylogic import interfaces
-from funkylogic import support
-from funkylogic import logical_name
+from . import interfaces
+from . import support
+from . import logical_name
 
 
 class ConcreteSequence(collections.Sequence):
@@ -27,16 +27,7 @@ class ConcreteSequence(collections.Sequence):
     def __getitem__(self, key):
         return self.terms[key]
     #
-    def __eq__(self, other):
-
-
-        print()
-        print("self.terms:", type(self.terms), self.terms)
-        print()
-        import pdb
-        pdb.set_trace()
-        print()
-        
+    def __eq__(self, other):        
         if isinstance(other, interfaces.LogicalInterface):
             return self.terms == other.terms
         else:
@@ -130,7 +121,17 @@ class LogicalExpression(ConcreteSequence, Logical):
 
 
     def __str__(self):
-        return logical_name.length_dispatch(self)(self)
+        try:
+            return logical_name.length_dispatch(self)(self)
+        except AttributeError as exc:
+
+            print()
+            print("self.terms:", type(self.terms), self.terms)
+            print()
+            import ipdb
+            ipdb.set_trace()
+            print()
+            
 
     def __repr__(self):
         return str.format(
